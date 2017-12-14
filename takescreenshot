@@ -1,0 +1,11 @@
+#!/bin/bash
+
+_SCRIPT_LOCATION="$(dirname $0)"
+
+
+_FILE_NAME="screenshot_$(cat /dev/urandom 2>/dev/null | tr -dc 0-9 | head -c 12).jpg"
+import -frame "$_FILE_NAME" -window root
+
+$_SCRIPT_LOCATION/stamp_image.py "$_FILE_NAME" -b "#FFFFFF" --time-format "%I:%M:%S %p %m-%d-%Y"
+
+
