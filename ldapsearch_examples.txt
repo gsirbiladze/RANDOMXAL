@@ -1,0 +1,18 @@
+
+
+
+ldapsearch \
+    -x -h ldap.ad.host.name \
+    -D "accname@ldap.ad.host.name" \
+    -W \
+    -b "cn=users,dc=ldap,dc=ad,dc=host,dc=name" \
+    -s sub "(cn=*)" cn mail sn
+
+
+ldapsearch -x -h ldap.ad.host.name -D "accname@ldap.ad.host.name" -b "dc=ldap,dc=ad,dc=host,dc=name" -W 
+
+ldapsearch -x -h ldap.ad.host.name -D "accname@ldap.ad.host.name" -b "dc=ldap,dc=ad,dc=host,dc=name" -W "(&(objectclass=User)(givenName=first_name)(sn=last_name))" mail
+
+ldapsearch -x -h ldap.ad.host.name -D "accname@ldap.ad.host.name" -b "dc=ldap,dc=ad,dc=host,dc=name" -W "(&(objectclass=User)(givenName=first_name))" sAMAccountName
+
+
