@@ -9,5 +9,6 @@ def r(x, y):
         d.point((randint(0, x),randint(0, y)),fill=(randint(0, 255),randint(0, 255),randint(0, 255),255))
     i.show()
 
+    
 if __name__ == '__main__':
     r(400,400)
