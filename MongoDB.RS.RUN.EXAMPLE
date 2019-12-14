@@ -1,0 +1,1 @@
+mongod --bind_ip 172.17.0.2 --port 27017  --replSet RS --dbpath /data/db --logpath /data/db/log/mongodb.log --logRotate rename --oplogSize 128 #--fork --bind_ip_all
