@@ -1,5 +1,5 @@
 # RANDOMXAL
-Just Random Sources and Texts
+Just Random Stuff
 
 **Get GNOME's current theme name**
 ```
