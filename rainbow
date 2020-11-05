@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#$(echo $RANDOM % 100 | bc)
+
+onoff(){
+    cat /dev/urandom | tr -dc 0-1 | head -c 1
+}
+
+randdigit(){
+    cat /dev/urandom | tr -dc 0-9 | head -c ${1-1}
+}
+
+randcolor(){
+    cat /dev/urandom | tr -dc 1-7 | head -c 1
+}
+
+randstring(){
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c $(randdigit 2)
+}
+
+while :
+do 
+    # echo -en "\x1b[8;32m" 
+    # rainbowstr="\x1b[1;8;7;3$(randdigit)m$(randstring)" 
+    rainbowstr="\x1b[$(onoff);8;7;3$(randcolor)m$(randstring)" 
+    echo -en $rainbowstr 
+    # echo "$rainbowstr"
+    sleep 0.05 
+done
+
