@@ -24,6 +24,7 @@ parser.add_argument('--stamp-position', '-p', default='bottom', choices=['top', 
 parser.add_argument('--text', '-t', help='Text')
 parser.add_argument('--time-format', default='%m-%d-%Y %I:%M:%S %p', help="DateTime display format. Default='%(default)s'")
 parser.add_argument('--duplicate', '-d', action='store_true', help='Duplicate and then make a change')
+parser.add_argument('--show',  action='store_true', help='Show Picture')
 args = parser.parse_args()
 
 
@@ -34,6 +35,7 @@ bg_color      = args.bg_color
 text_position = args.stamp_position
 text_color    = args.stamp_color
 make_a_copy   = args.duplicate
+show          = args.show
 
 if not os.path.isfile(image_source):
     print("Can't find file '%s'. Make sure file exists ..."%image_source)
@@ -63,16 +65,16 @@ textW, textH = font.getsize(text_to_draw)
 
 text_offset = 5
 text_positions = {
-                     'top'          : (imgW/2 - textW/2, text_offset),
-                     'top_left'     : (text_offset, text_offset),
-                     'top_right'    : (imgW-text_offset-textW, text_offset),
-                     'center'       : (imgW/2 - textW/2, imgH/2 - textH/2),
-                     'center_left'  : (text_offset, imgH/2 - textH/2),
-                     'center_right' : (imgW-text_offset-textW, imgH/2 - textH/2),
-                     'bottom'       : (imgW/2 - textW/2, imgH-text_offset-textH),
-                     'bottom_left'  : (text_offset, imgH-text_offset-textH),
-                     'bottom_right' : (imgW-text_offset-textW, imgH-text_offset-textH),
-                 }
+    'top'          : (int(imgW/2 - textW/2),int( text_offset)),
+    'top_left'     : (int(text_offset), int(text_offset)),
+    'top_right'    : (int(imgW-text_offset-textW), int(text_offset)),
+    'center'       : (int(imgW/2 - textW/2), int(imgH/2 - textH/2)),
+    'center_left'  : (int(text_offset), int(imgH/2 - textH/2)),
+    'center_right' : (int(imgW-text_offset-textW), int(imgH/2 - textH/2)),
+    'bottom'       : (int(imgW/2 - textW/2), int(imgH-text_offset-textH)),
+    'bottom_left'  : (int(text_offset), int(imgH-text_offset-textH)),
+    'bottom_right' : (int(imgW-text_offset-textW), int(imgH-text_offset-textH)),
+}
 
 if bg_color:
     text_bg = Image.new('RGBA', (textW, textH), color=bg_color)
@@ -90,6 +92,7 @@ if make_a_copy:
 else:
     img.save(image_source)
 
-img.show()
+if show: img.show()
 
 img.close()
+
