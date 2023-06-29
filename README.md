@@ -105,6 +105,9 @@ OR put the variable inside the single  quotes**
 - `echo  ${name//st1/st2}`
   - _result_ : **Replace all  match 'st1' with 'st2' in 'name'**
 
+---
+---
+
 **Get GNOME's current theme name**
 ```
 gsettings get org.gnome.desktop.interface gtk-theme
