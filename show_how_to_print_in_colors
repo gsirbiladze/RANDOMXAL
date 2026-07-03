@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+text_to_print="${*:-This is a TEXT}"
+
+for c in {0..255};
+do 
+    actual_text='\e[1;38;5;'${c}'m'$text_to_print'\e[0m'
+    # echo "'"$actual_text"'"
+    echo -nE "[Actual Text 🡆 '"$actual_text"']"
+    echo -e  "፨[In Color 🡆  '"$actual_text"']፨[Code 🡆 "$c"]"
+done
+
